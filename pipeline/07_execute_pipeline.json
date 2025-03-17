@@ -1,0 +1,52 @@
+{
+	"name": "07_execute_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "01_copydata",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "01_copydata",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "02_procedure",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "01_copydata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "02_stored_procedure",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "EL Cases"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-03-05T16:28:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

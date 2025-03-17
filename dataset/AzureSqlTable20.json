@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlTable20",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "condsplit_destination"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
